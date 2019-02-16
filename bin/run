@@ -6,8 +6,19 @@ require_relative "../config/environment.rb"
 
 
 song = Song.new(name: "Hello", album: "25")
-puts "song name: " + song.name
-puts "song album: " + song.album
+puts "#{song.name} was created."
 song.save
 
-DB[:conn].execute("SELECT * FROM songs")
+song1 = Song.new(name: "I Miss You", album: "25")
+song1.save
+puts "#{song1.name} was created."
+
+song2 = Song.new(name: "Source Decay", album: "All Hail West Texas")
+song2.save
+puts "#{song2.name} was created."
+
+song3 = Song.new(name: "Absolute Lithops Effect", album: "All Hail West Texas")
+song3.save
+puts "#{song3.name} was created."
+
+puts DB[:conn].execute("SELECT * FROM songs ORDER BY album")
